@@ -12,6 +12,7 @@
 <!-- WEEKLY_DASHBOARD_END -->
 
 
+# 스터디 참여 가이드 
 
 ## 1. 현재 공용 스터디 레포 fork하기
 > choose an owner 는 본인 이름 선택하면 됩니다
@@ -39,8 +40,16 @@
 
 
 
-
-## 4. action이 잘 실행되었다면, 본인 백준명 폴더 내에 방금 푼 문제가 등록되었을 것임, main 브랜치를 기준으로 브랜치를 만듦 브랜치 컨벤션은 /boj/{문제티어}/{문제번호}
+## 4. action 실행 후 main 브랜치 기준으로 브랜치 생성 
+> 본인 백준명 폴더 내에 방금 푼 문제가 등록되었을 것임, main 브랜치를 기준으로 브랜치를 만듦 브랜치 컨벤션은 /boj/{문제티어}/{문제번호}
+<img width="309" height="244" alt="image" src="https://github.com/user-attachments/assets/ff5fd580-d0db-49d1-b757-606802f4781d" />
+---
 
 ## 5. 공용 스터디 레포에 PR 날리기
-## 6. main으로 merge 하기
+<img width="671" height="166" alt="image" src="https://github.com/user-attachments/assets/bb632b61-2692-48e4-8dc5-22dc5d6f179f" />
+---
+
+## 6. main으로 squash  merge 하기
+<img width="703" height="57" alt="image" src="https://github.com/user-attachments/assets/196da5ab-e6bf-446e-a136-ab4de22870f1" />
+
+
