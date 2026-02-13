@@ -29,29 +29,6 @@ jobs:
             const org = context.repo.owner;
             const repo = context.repo.repo;
 
-            // 🔹 일반 멤버
-            const { data: members } = await github.rest.orgs.listMembers({
-              org: org,
-              per_page: 100
-            });
-
-            // 🔹 Owner (admin role)
-            const { data: owners } = await github.rest.orgs.listMembers({
-              org: org,
-              role: "admin",
-              per_page: 100
-            });
-
-            // 🔹 중복 제거 후 통합
-            const memberLogins = [
-              ...new Set([
-                ...members.map(m => m.login),
-                ...owners.map(o => o.login)
-              ])
-            ];
-
-            console.log("Org participants:", memberLogins);
-
             // 🔹 KST 기준 이번 주 월요일 00:00 계산
             const now = new Date();
             const kstNow = new Date(
@@ -84,14 +61,15 @@ jobs:
 
             console.log("Merged PR count this week:", weekly.length);
 
-            // 🔹 멤버별 카운트 초기화
+            // 🔹 작성자 기준 집계
             const counts = {};
-            memberLogins.forEach(user => counts[user] = 0);
 
             weekly.forEach(pr => {
-              if (counts.hasOwnProperty(pr.user.login)) {
-                counts[pr.user.login]++;
+              const author = pr.user.login;
+              if (!counts[author]) {
+                counts[author] = 0;
               }
+              counts[author]++;
             });
 
             // 🔹 Markdown 테이블 생성
@@ -100,16 +78,22 @@ jobs:
             table += "| Member | Count | Status |\n";
             table += "|--------|-------|--------|\n";
 
-            for (const user of memberLogins) {
-              const count = counts[user];
-              const status = count >= 5 ? "✅" : "❌";
-              table += `| ${user} | ${count} | ${status} |\n`;
+            const authors = Object.keys(counts).sort();
+
+            if (authors.length === 0) {
+              table += "| - | 0 | ❌ |\n";
+            } else {
+              authors.forEach(user => {
+                const count = counts[user];
+                const status = count >= 5 ? "✅" : "❌";
+                table += `| ${user} | ${count} | ${status} |\n`;
+              });
             }
 
             fs.writeFileSync("dashboard.md", table);
 
       # =========================================
-      # 2️⃣ README 치환 (완전 안정 버전)
+      # 2️⃣ README 치환
       # =========================================
       - name: Inject into README
         run: |
@@ -136,7 +120,7 @@ jobs:
           mv temp.md README.md
 
       # =========================================
-      # 3️⃣ 변경사항 커밋 & 푸시
+      # 3️⃣ 변경사항 커밋
       # =========================================
       - name: Commit changes
         run: |
