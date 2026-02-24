@@ -8,7 +8,7 @@
 
 | Member | Count | Status |
 |--------|-------|--------|
-| KangYeSeo04 | 1 | ❌ |
+| KangYeSeo04 | 2 | ❌ |
 | Nul0luN | 2 | ❌ |
 | alicebsy | 1 | ❌ |
 | orca-svg | 11 | ✅ |
