@@ -9,7 +9,7 @@
 | Member | Count | Status |
 |--------|-------|--------|
 | KangYeSeo04 | 2 | ❌ |
-| Nul0luN | 7 | ✅ |
+| Nul0luN | 8 | ✅ |
 | alicebsy | 2 | ❌ |
 | hjxarchive | 5 | ✅ |
 | orca-svg | 15 | ✅ |
