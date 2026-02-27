@@ -11,7 +11,7 @@
 | KangYeSeo04 | 4 | ❌ |
 | Nul0luN | 14 | ✅ |
 | alicebsy | 2 | ❌ |
-| godten-cmd | 4 | ❌ |
+| godten-cmd | 5 | ✅ |
 | hjxarchive | 5 | ✅ |
 | orca-svg | 16 | ✅ |
 | sungjaep11 | 2 | ❌ |
